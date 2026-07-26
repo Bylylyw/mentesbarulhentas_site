@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentes Barulhentas — Blues/Grunge de São Thomé das Letras</title>
+<meta name="description" content="Mentes Barulhentas: blues e grunge em compasso 3/4, nascidos do silêncio da montanha de São Thomé das Letras.">
+
+<!-- Open Graph / preview ao compartilhar -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mentes Barulhentas">
+<meta property="og:title" content="Mentes Barulhentas — Blues/Grunge de São Thomé das Letras">
+<meta property="og:description" content="Blues e grunge em compasso 3/4, nascidos do silêncio da montanha de São Thomé das Letras.">
+<meta property="og:image" content="https://mentesbarulhentas.com.br/og-image.jpg">
+<meta property="og:url" content="https://mentesbarulhentas.com.br/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://mentesbarulhentas.com.br/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --basalt: #0a0908;
+    --stone-shadow: #17130f;
+    --night: #0a0e1a;
+    --quartz: #ece5d6;
+    --quartz-dim: #a49d8d;
+    --ember: #b8532e;
+    --ember-bright: #e08348;
+    --flash: #eef2ff;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--basalt); color:var(--quartz);
+    font-family:'IBM Plex Mono', monospace; line-height:1.6;
+    overflow-x:hidden; cursor:default;
+  }
+  h1,h2,h3,.display{ font-family:'Fraunces', serif; font-weight:900; letter-spacing:-0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  ::selection{ background:var(--ember); color:var(--basalt); }
+  ::-webkit-scrollbar{ width:9px; }
+  ::-webkit-scrollbar-track{ background:var(--basalt); }
+  ::-webkit-scrollbar-thumb{ background:var(--ember); border-radius:0; }
+
+  .grain{
+    position:fixed; inset:0; z-index:80; pointer-events:none; opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+
+  #intro{ position:fixed; inset:0; z-index:100; background:var(--flash); animation: introSeq 1.8s ease forwards; }
+  @keyframes introSeq{
+    0%{ background:var(--flash); opacity:1; }
+    8%{ background:var(--basalt); opacity:1; }
+    14%{ background:var(--flash); opacity:1; }
+    20%{ background:var(--night); opacity:1; }
+    85%{ background:var(--night); opacity:1; }
+    100%{ background:var(--night); opacity:0; visibility:hidden; }
+  }
+
+  #stars{ position:fixed; inset:0; z-index:0; background:linear-gradient(to bottom, var(--night) 0%, var(--basalt) 75%); }
+
+  .spark{ position:fixed; z-index:70; width:4px; height:4px; border-radius:50%; background:var(--ember-bright);
+    pointer-events:none; box-shadow:0 0 6px 1px var(--ember); animation: sparkFade 0.9s ease-out forwards; }
+  @keyframes sparkFade{ to{ transform:translateY(-24px) scale(0.2); opacity:0; } }
+
+  .waltz{ position:fixed; bottom:24px; right:24px; z-index:50; display:flex; align-items:center; gap:10px;
+    font-size:11px; color:var(--quartz-dim); letter-spacing:0.15em; background:rgba(10,9,8,0.6);
+    padding:10px 14px; border:1px solid rgba(164,157,141,0.25); backdrop-filter:blur(6px); }
+  .waltz .bars{ display:flex; align-items:flex-end; gap:4px; height:18px; }
+  .waltz .bar{ width:4px; background:var(--stone-shadow); border:1px solid var(--quartz-dim); transition:height 0.15s ease, background 0.15s; }
+  .waltz .bar.on{ background:var(--ember); border-color:var(--ember-bright); }
+  @media (max-width:640px){ .waltz{ display:none; } }
+
+  nav{ position:fixed; top:0; left:0; right:0; z-index:60; display:flex; justify-content:space-between; align-items:center;
+    padding:22px clamp(20px,5vw,56px); background:linear-gradient(to bottom, rgba(10,9,8,0.85), transparent); }
+  nav .brand{ font-family:'Fraunces', serif; font-weight:600; font-size:15px; letter-spacing:0.08em; position:relative; }
+  nav ul{ list-style:none; display:flex; gap:clamp(14px,3vw,32px); font-size:12px; letter-spacing:0.1em; }
+  nav ul li a{ opacity:0.75; transition:opacity 0.2s, text-shadow 0.2s; position:relative; }
+  nav ul li a:hover{ opacity:1; color:var(--ember-bright); text-shadow:0 0 8px rgba(224,131,72,0.6); }
+  @media (max-width:640px){ nav ul{ display:none; } }
+
+  section{ position:relative; z-index:2; padding:clamp(80px,14vw,140px) clamp(20px,6vw,80px); }
+
+  .reveal{ opacity:0; transform:translateY(40px); transition:opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  .hero{ min-height:100vh; display:flex; flex-direction:column; justify-content:center; overflow:hidden;
+    border-bottom:1px solid rgba(164,157,141,0.15); }
+  .hero-scene{ position:absolute; inset:0; z-index:0; }
+  .hero-photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    object-position:center 30%; filter:grayscale(0.15) contrast(1.08) brightness(0.62) saturate(1.1);
+    will-change:transform; transform:scale(1.06); }
+  .hero-overlay{ position:absolute; inset:0;
+    background:
+      linear-gradient(to top, var(--basalt) 0%, rgba(10,9,8,0.55) 38%, rgba(10,9,8,0.15) 62%, rgba(10,9,8,0.55) 100%),
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(184,83,46,0.18), transparent 70%); }
+  .layer{ position:absolute; left:0; right:0; will-change:transform; }
+  .layer-fog{ bottom:0; height:22vh; background:linear-gradient(to top, rgba(10,9,8,0.9), transparent);
+    animation: fogDrift 18s ease-in-out infinite alternate; }
+
+  /* signature divider — monolith + crossed guitars insignia */
+  .divider{ position:relative; z-index:3; display:flex; align-items:center; justify-content:center;
+    padding:26px 0; background:var(--basalt); border-bottom:1px solid rgba(164,157,141,0.12); }
+  .divider svg{ opacity:0.65; }
+
+  /* A BANDA section */
+  .banda{ border-bottom:1px solid rgba(164,157,141,0.12); background:var(--basalt); }
+  .banda .top{ display:grid; grid-template-columns:1fr; gap:44px; margin-bottom:56px; }
+  @media (min-width:900px){ .banda .top{ grid-template-columns:1.1fr 0.9fr; align-items:center; gap:70px; } }
+  .banda h2{ font-size:clamp(28px,4vw,44px); color:var(--quartz); margin-bottom:18px; }
+  .banda p{ color:var(--quartz-dim); font-size:14.5px; max-width:50ch; }
+  .stage-photo-wrap{ position:relative; overflow:hidden; }
+  .stage-photo-wrap img{ width:100%; display:block; filter:grayscale(0.75) sepia(0.12) contrast(1.15) brightness(0.85);
+    transition:filter 0.6s ease, transform 0.6s ease; transform:scale(1.02); }
+  .stage-photo-wrap:hover img{ filter:grayscale(0) sepia(0) contrast(1.05) brightness(1); transform:scale(1.06); }
+  .stage-photo-wrap::after{ content:''; position:absolute; inset:0; box-shadow: inset 0 0 60px rgba(0,0,0,0.5); pointer-events:none; }
+  .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .gallery figure{ position:relative; overflow:hidden; aspect-ratio:3/4; }
+  .gallery img{ width:100%; height:100%; object-fit:cover; object-position:center 20%;
+    filter:grayscale(0.85) contrast(1.1) brightness(0.8); transition:filter 0.5s ease, transform 0.5s ease; }
+  .gallery figure:hover img{ filter:grayscale(0) contrast(1.05) brightness(1); transform:scale(1.05); }
+  .gallery figcaption{ position:absolute; left:10px; bottom:10px; font-size:10.5px; letter-spacing:0.1em;
+    color:var(--quartz-dim); opacity:0; transition:opacity 0.3s ease; text-transform:uppercase; }
+  .gallery figure:hover figcaption{ opacity:1; color:var(--ember-bright); }
+  @media (max-width:640px){ .gallery{ grid-template-columns:repeat(3,1fr); gap:8px; } }
+  @keyframes fogDrift{ from{ transform:translateX(-3%); } to{ transform:translateX(3%); } }
+
+  .shooting-star{ position:absolute; width:2px; height:2px; background:var(--quartz); border-radius:50%;
+    box-shadow:0 0 6px 2px rgba(236,229,214,0.7); opacity:0; }
+  @keyframes shoot{
+    0%{ opacity:0; transform:translate(0,0) rotate(-35deg) scaleX(1); }
+    5%{ opacity:1; }
+    70%{ opacity:1; }
+    100%{ opacity:0; transform:translate(-420px,260px) rotate(-35deg) scaleX(60); }
+  }
+
+  .hero-content{ position:relative; z-index:3; }
+  .hero .eyebrow{ font-size:12px; letter-spacing:0.25em; color:var(--ember-bright); text-transform:uppercase; margin-bottom:20px; }
+  .hero h1{ font-size:clamp(48px,11vw,132px); line-height:0.9; color:var(--quartz);
+    text-shadow:0 0 80px rgba(184,83,46,0.25); }
+  .hero .sub{ max-width:520px; margin-top:28px; font-size:clamp(14px,1.6vw,17px); color:var(--quartz-dim); }
+  .hero .sub em{ font-style:italic; color:var(--quartz); }
+  .hero .scroll-cue{ margin-top:64px; font-size:11px; color:var(--quartz-dim); letter-spacing:0.2em;
+    display:flex; align-items:center; gap:10px; animation:cuePulse 2.4s ease-in-out infinite; }
+  .hero .scroll-cue::before{ content:''; width:24px; height:1px; background:var(--quartz-dim); }
+  @keyframes cuePulse{ 0%,100%{ opacity:0.5; } 50%{ opacity:1; } }
+
+  .ciclo{ border-bottom:1px solid rgba(164,157,141,0.12); background:
+    radial-gradient(ellipse 50% 30% at 80% 20%, rgba(184,83,46,0.06), transparent), var(--basalt); }
+  .ciclo .grid{ display:grid; grid-template-columns:1fr; gap:48px; }
+  @media (min-width:900px){ .ciclo .grid{ grid-template-columns:0.9fr 1.1fr; gap:80px; } }
+  .tag{ font-size:11px; letter-spacing:0.2em; color:var(--ember-bright); text-transform:uppercase; margin-bottom:16px; }
+  .ciclo h2{ font-size:clamp(28px,4vw,44px); color:var(--quartz); margin-bottom:20px; }
+  .ciclo p{ color:var(--quartz-dim); font-size:14.5px; max-width:52ch; margin-bottom:14px; }
+  .indices{ display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+  .indices span{ font-size:11px; letter-spacing:0.05em; padding:8px 14px; border:1px solid rgba(164,157,141,0.3);
+    color:var(--quartz-dim); position:relative; overflow:hidden; transition:color 0.3s, border-color 0.3s; }
+  .indices span::before{ content:''; position:absolute; inset:0; background:var(--ember); transform:scaleX(0);
+    transform-origin:left; transition:transform 0.35s ease; z-index:-1; }
+  .indices span:hover{ color:var(--basalt); border-color:var(--ember-bright); }
+  .indices span:hover::before{ transform:scaleX(1); }
+
+  .faixas{ background:var(--stone-shadow); border-bottom:1px solid rgba(164,157,141,0.12); }
+  .faixas h2{ font-size:clamp(28px,4vw,44px); margin-bottom:48px; }
+  .faixa{ position:relative; display:grid; grid-template-columns:56px 1fr auto auto; align-items:center; gap:20px;
+    padding:24px 18px; border-top:1px solid rgba(164,157,141,0.15); transition:transform 0.25s ease, background 0.25s ease;
+    transform-style:preserve-3d; }
+  .faixa:last-child{ border-bottom:1px solid rgba(164,157,141,0.15); }
+  .faixa:hover{ background:rgba(184,83,46,0.06); }
+  .faixa .num{ font-family:'Fraunces', serif; font-weight:300; font-size:22px; color:var(--ember); }
+  .faixa .info h3{ font-size:19px; font-weight:600; color:var(--quartz); margin-bottom:4px; }
+  .faixa .info p{ font-size:12.5px; color:var(--quartz-dim); max-width:48ch; }
+  .faixa .status{ font-size:11px; letter-spacing:0.08em; color:var(--quartz-dim); white-space:nowrap; }
+  .vinyl{ width:38px; height:38px; }
+  .vinyl circle.disc{ fill:var(--basalt); stroke:var(--quartz-dim); stroke-width:1; }
+  .vinyl g{ transform-origin:center; animation:spin 3.5s linear infinite; animation-play-state:paused; }
+  .faixa.playing .vinyl g{ animation-play-state:running; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  @media (max-width:640px){ .faixa{ grid-template-columns:36px 1fr; } .faixa .status, .faixa .play-btn{ display:none; } }
+
+  .play-btn{ position:relative; width:44px; height:44px; border:none; background:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; padding:0; }
+  .play-btn .vinyl{ position:absolute; inset:0; margin:auto; width:38px; height:38px; }
+  .play-btn svg.ring{ position:absolute; inset:0; transform:rotate(-90deg); }
+  .play-btn svg.ring circle{ fill:none; stroke:var(--ember); stroke-width:2; stroke-dasharray:113; stroke-dashoffset:113;
+    transition:stroke-dashoffset 0.1s linear; }
+  .play-btn .icon{ position:relative; z-index:1; width:14px; height:14px; }
+  .play-btn .icon .pause{ display:none; }
+  .faixa.playing .play-btn .icon .play{ display:none; }
+  .faixa.playing .play-btn .icon .pause{ display:block; }
+  .faixa.audio-missing .play-btn{ opacity:0.35; cursor:default; }
+  .faixa .audio-hint{ font-size:10.5px; color:var(--ember-bright); letter-spacing:0.05em; opacity:0;
+    transition:opacity 0.3s ease; position:absolute; left:0; right:0; bottom:2px; text-align:center;
+    pointer-events:none; }
+  .faixa.show-hint .audio-hint{ opacity:1; }
+  .audio-note{ margin-top:28px; font-size:11.5px; color:var(--quartz-dim); letter-spacing:0.05em; }
+
+  .ouca{ border-bottom:1px solid rgba(164,157,141,0.12); }
+  .ouca h2{ font-size:clamp(28px,4vw,44px); margin-bottom:16px; }
+  .ouca p{ color:var(--quartz-dim); font-size:14.5px; max-width:52ch; margin-bottom:36px; }
+  .links{ display:flex; flex-wrap:wrap; gap:14px; }
+  .links a{ border:1px solid rgba(164,157,141,0.3); padding:15px 26px; font-size:12.5px; letter-spacing:0.08em;
+    position:relative; overflow:hidden; color:var(--quartz-dim); transition:color 0.3s, border-color 0.3s; display:inline-block; }
+  .links a::after{ content:''; position:absolute; left:50%; top:50%; width:0; height:0; background:rgba(224,131,72,0.35);
+    border-radius:50%; transform:translate(-50%,-50%); transition:width 0.5s ease, height 0.5s ease; }
+  .links a:hover{ border-color:var(--ember-bright); color:var(--quartz); }
+  .links a:hover::after{ width:220px; height:220px; }
+  .links a span{ position:relative; z-index:1; }
+  .links a.disabled{ opacity:0.4; pointer-events:none; }
+
+  .shows{ background:var(--stone-shadow); border-bottom:1px solid rgba(164,157,141,0.12); }
+  .shows h2{ font-size:clamp(28px,4vw,44px); margin-bottom:40px; }
+  .show-item{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
+    padding:22px 4px; border-top:1px solid rgba(164,157,141,0.15); position:relative; }
+  .show-item:last-child{ border-bottom:1px solid rgba(164,157,141,0.15); }
+  .show-item::before{ content:''; position:absolute; left:-16px; top:50%; width:8px; height:8px; border-radius:50%;
+    background:var(--ember); box-shadow:0 0 0 0 rgba(184,83,46,0.6); animation:pulseDot 2.4s ease-out infinite;
+    transform:translateY(-50%); }
+  @keyframes pulseDot{ 0%{ box-shadow:0 0 0 0 rgba(184,83,46,0.5); } 100%{ box-shadow:0 0 0 12px rgba(184,83,46,0); } }
+  .show-item .local{ font-size:16px; color:var(--quartz); }
+  .show-item .data{ font-size:12px; color:var(--quartz-dim); letter-spacing:0.05em; }
+
+  footer{ padding:clamp(60px,10vw,100px) clamp(20px,6vw,80px) 40px; display:flex; flex-direction:column; gap:40px;
+    position:relative; overflow:hidden; }
+  footer .top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:32px; }
+  footer h2{ font-size:clamp(26px,4vw,38px); max-width:16ch; cursor:default; }
+  footer h2 span{ display:inline-block; transition:transform 0.15s ease, color 0.15s ease; }
+  footer .social{ display:flex; gap:20px; font-size:12px; letter-spacing:0.08em; }
+  footer .social a{ color:var(--quartz-dim); transition:color 0.2s; }
+  footer .social a:hover{ color:var(--ember-bright); }
+  footer .bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:11px;
+    color:var(--quartz-dim); padding-top:24px; border-top:1px solid rgba(164,157,141,0.15); }
+  #embers{ position:absolute; inset:0; pointer-events:none; z-index:0; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div id="intro" aria-hidden="true"></div>
+<div class="grain"></div>
+<canvas id="stars"></canvas>
+
+<div class="waltz" aria-hidden="true">
+  <span>3/4</span>
+  <div class="bars">
+    <div class="bar" id="bar1" style="height:8px"></div>
+    <div class="bar" id="bar2" style="height:14px"></div>
+    <div class="bar" id="bar3" style="height:8px"></div>
+  </div>
+</div>
+
+<nav>
+  <div class="brand">MENTES BARULHENTAS</div>
+  <ul>
+    <li><a href="#ciclo">O Ciclo</a></li>
+    <li><a href="#banda">A Banda</a></li>
+    <li><a href="#faixas">Músicas</a></li>
+    <li><a href="#ouca">Ouça</a></li>
+    <li><a href="#shows">Shows</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="topo">
+  <div class="hero-scene">
+    <img class="hero-photo" id="heroPhoto" src="images/hero.jpg" alt="Vocalista da Mentes Barulhentas na Pirâmide de São Thomé das Letras ao pôr do sol">
+    <div class="hero-overlay"></div>
+    <div class="layer layer-fog"></div>
+    <div id="shooters"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="eyebrow reveal">Blues / Grunge — São Thomé das Letras, MG</div>
+    <h1 class="reveal">MENTES<br>BARULHENTAS</h1>
+    <p class="sub reveal">Um blues que carrega peso de grunge, escrito em <em>compasso 3/4</em> — a valsa que a montanha ensinou. Pó de quartzo, escadarias de pedra, grutas e um céu cheio de estrelas viram canção.</p>
+    <div class="scroll-cue reveal">DESÇA A LADEIRA</div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg width="120" height="46" viewBox="0 0 120 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="var(--ember-bright)" stroke-width="1.3">
+      <rect x="53" y="4" width="14" height="34" fill="none"/>
+      <polygon points="53,4 67,4 60,-10" fill="none"/>
+      <ellipse cx="20" cy="24" rx="7" ry="18" transform="rotate(-30 20 24)" fill="none"/>
+      <line x1="20" y1="6" x2="20" y2="42" transform="rotate(-30 20 24)"/>
+      <ellipse cx="100" cy="24" rx="7" ry="18" transform="rotate(30 100 24)" fill="none"/>
+      <line x1="100" y1="6" x2="100" y2="42" transform="rotate(30 100 24)"/>
+    </g>
+  </svg>
+</div>
+
+<section class="ciclo" id="ciclo">
+  <div class="grid">
+    <div class="reveal">
+      <div class="tag">O Álbum</div>
+      <h2>O Que a Montanha Escreveu</h2>
+      <svg width="140" height="70" viewBox="0 0 140 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="var(--quartz-dim)" stroke-width="1.4" opacity="0.8">
+          <ellipse cx="45" cy="35" rx="10" ry="26" transform="rotate(-28 45 35)"/>
+          <line x1="45" y1="9" x2="45" y2="61" transform="rotate(-28 45 35)"/>
+          <ellipse cx="95" cy="35" rx="10" ry="26" transform="rotate(28 95 35)"/>
+          <line x1="95" y1="9" x2="95" y2="61" transform="rotate(28 95 35)"/>
+        </g>
+      </svg>
+    </div>
+    <div class="reveal">
+      <p>Um álbum-conceito inspirado em São Thomé das Letras — lugar onde a banda nasceu e voltou pra buscar as canções. Dez faixas principais e duas faixas bônus, todas em compasso ternário, como se cada música fosse uma valsa arrastada pelo peso do blues.</p>
+      <p>A paisagem vira vocabulário: o pó branco de quartzito, as ladeiras de pedra, as grutas, as cachoeiras, o céu noturno, os muros de pedra seca sem argamassa. Cada verso tenta escrever o que a montanha já sabia antes da banda chegar.</p>
+      <div class="indices">
+        <span>pó de quartzito</span><span>ladeiras de pedra</span><span>grutas</span>
+        <span>cachoeiras</span><span>céu noturno</span><span>muros de pedra seca</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="banda" id="banda">
+  <div class="top">
+    <div class="reveal">
+      <div class="tag">Ao Vivo</div>
+      <h2>Onde o blues vira grunge</h2>
+      <p>No palco é onde o compasso 3/4 ganha peso: amplificador Marshall no talo, voz rachada, luz baixa. As mesmas canções que nascem do silêncio da montanha voltam pro público como som pesado — cru, sem enfeite.</p>
+    </div>
+    <div class="stage-photo-wrap reveal">
+      <img src="images/stage.jpg" alt="Vocalista da Mentes Barulhentas se apresentando ao vivo, microfone em punho, amplificador Marshall ao fundo" loading="lazy">
+    </div>
+  </div>
+  <div class="gallery reveal">
+    <figure>
+      <img src="images/gallery1.jpg" alt="Retrato de bastidores da Mentes Barulhentas" loading="lazy">
+      <figcaption>bastidores</figcaption>
+    </figure>
+    <figure>
+      <img src="images/gallery2.jpg" alt="Retrato de bastidores da Mentes Barulhentas" loading="lazy">
+      <figcaption>antes do show</figcaption>
+    </figure>
+    <figure>
+      <img src="images/gallery3.jpg" alt="Retrato de bastidores da Mentes Barulhentas" loading="lazy">
+      <figcaption>em cena</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="faixas" id="faixas">
+  <div class="tag reveal">Do Ciclo</div>
+  <h2 class="reveal">Faixas em destaque</h2>
+  <div id="faixasList"></div>
+  <p class="audio-note reveal">Clique no vinil pra ouvir uma amostra.</p>
+</section>
+
+<section class="ouca" id="ouca">
+  <div class="tag reveal">Ouça</div>
+  <h2 class="reveal">Onde encontrar</h2>
+  <p class="reveal">As faixas estão sendo finalizadas e vão pro ar em breve. Assim que os links de distribuição estiverem ativos, eles aparecem aqui.</p>
+  <div class="links reveal">
+    <a href="#" class="disabled"><span>Spotify — em breve</span></a>
+    <a href="#" class="disabled"><span>Apple Music — em breve</span></a>
+    <a href="#" class="disabled"><span>YouTube — em breve</span></a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener"><span>Instagram</span></a>
+  </div>
+</section>
+
+<section class="shows" id="shows">
+  <div class="tag reveal">Agenda</div>
+  <h2 class="reveal">Próximos shows</h2>
+  <div id="showsList"></div>
+</section>
+
+<footer id="contato">
+  <div id="embers"></div>
+  <div class="top reveal">
+    <h2 id="footerTitle">Vamos tocar em algum lugar.</h2>
+    <div class="social">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+      <a href="mailto:contato@mentesbarulhentas.com.br">contato@mentesbarulhentas.com.br</a>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2026 Mentes Barulhentas</span>
+    <span>Formiga, MG — Brasil</span>
+  </div>
+</footer>
+
+<script>
+  /* ====================================================================
+     DADOS DO SITE — edite as faixas e os shows aqui embaixo.
+     (Antes isso vivia num arquivo data.js separado, mas alguns navegadores
+     bloqueiam carregar arquivos externos quando você abre o HTML direto
+     do computador — por isso os dados agora ficam dentro do próprio arquivo,
+     pra nunca falhar. Só editar os valores entre aspas.)
+     ==================================================================== */
+  const SITE_DATA = {
+    tracks: [
+      {
+        title: "O Combinado",
+        description: "Faixa do ciclo \"O Que a Montanha Escreveu\".",
+        status: "",
+        audio: "audio/o-combinado.mp3"
+      },
+      {
+        title: "Amanhecer",
+        description: "Faixa do ciclo \"O Que a Montanha Escreveu\".",
+        status: "",
+        audio: "audio/amanhecer.mp3"
+      },
+      {
+        title: "Venha Como Está",
+        description: "Primeiro single pareado do ciclo — a versão de banda de \"O Que a Montanha Escreveu\".",
+        status: "",
+        audio: "audio/venha-como-esta.mp3"
+      },
+      {
+        title: "O Palco Que Me Esperou",
+        description: "Faixa do ciclo \"O Que a Montanha Escreveu\".",
+        status: "",
+        audio: "audio/o-palco-que-me-esperou.mp3"
+      },
+      {
+        title: "Exilado do Céu",
+        description: "Faixa do ciclo \"O Que a Montanha Escreveu\".",
+        status: "",
+        audio: "audio/exilado-do-ceu.mp3"
+      }
+    ],
+    shows: [
+      {
+        local: "Bar do Dois — São Thomé das Letras, MG",
+        data: "data a confirmar"
+      }
+    ]
+  };
+  /* ==================================================================== */
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- render faixas + shows a partir de data.js ---- */
+  const vinylSvg = `<svg class="vinyl" viewBox="0 0 40 40"><circle class="disc" cx="20" cy="20" r="18"/>
+      <g><circle cx="20" cy="20" r="13" fill="none" stroke="var(--quartz-dim)" stroke-width="0.6"/>
+      <circle cx="20" cy="20" r="9" fill="none" stroke="var(--quartz-dim)" stroke-width="0.6"/>
+      <circle cx="20" cy="20" r="3" fill="var(--ember)"/></g></svg>`;
+
+  const playIcon = `<svg class="icon" viewBox="0 0 24 24">
+      <polygon class="play" points="6,4 20,12 6,20" fill="var(--quartz)"/>
+      <g class="pause"><rect x="6" y="4" width="4" height="16" fill="var(--quartz)"/><rect x="14" y="4" width="4" height="16" fill="var(--quartz)"/></g>
+    </svg>
+    <svg class="ring" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18"></circle></svg>`;
+
+  const faixasList = document.getElementById('faixasList');
+  if(faixasList && SITE_DATA){
+    SITE_DATA.tracks.forEach((t, i)=>{
+      const el = document.createElement('div');
+      el.className = 'faixa reveal';
+      el.dataset.audio = t.audio || '';
+      el.innerHTML = `
+        <div class="num">${String(i+1).padStart(2,'0')}</div>
+        <div class="info"><h3>${t.title}</h3><p>${t.description||''}</p></div>
+        <button class="play-btn" type="button" aria-label="Tocar amostra de ${t.title}">${vinylSvg}${playIcon}</button>
+        <span class="audio-hint">amostra em breve</span>
+        <div class="status">${t.status||''}</div>
+      `;
+      faixasList.appendChild(el);
+    });
+  }
+
+  const showsList = document.getElementById('showsList');
+  if(showsList && SITE_DATA){
+    SITE_DATA.shows.forEach(s=>{
+      const el = document.createElement('div');
+      el.className = 'show-item reveal';
+      el.innerHTML = `<div class="local">${s.local}</div><div class="data">${s.data}</div>`;
+      showsList.appendChild(el);
+    });
+  }
+
+  /* ---- player de áudio compartilhado ---- */
+  const player = new Audio();
+  let activeCard = null;
+  let raf = null;
+
+  function stopActive(){
+    if(activeCard){
+      activeCard.classList.remove('playing');
+      const ring = activeCard.querySelector('.ring circle');
+      if(ring) ring.style.strokeDashoffset = 113;
+    }
+    player.pause();
+    activeCard = null;
+    if(raf) cancelAnimationFrame(raf);
+  }
+
+  function updateRing(){
+    if(!activeCard || !player.duration) { raf = requestAnimationFrame(updateRing); return; }
+    const ring = activeCard.querySelector('.ring circle');
+    const pct = player.currentTime / player.duration;
+    if(ring) ring.style.strokeDashoffset = 113 - (113*pct);
+    raf = requestAnimationFrame(updateRing);
+  }
+
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.play-btn');
+    if(!btn) return;
+    const card = btn.closest('.faixa');
+    const src = card.dataset.audio;
+
+    if(activeCard === card){
+      stopActive();
+      return;
+    }
+
+    stopActive();
+    if(!src){
+      card.classList.add('show-hint');
+      setTimeout(()=>card.classList.remove('show-hint'), 1800);
+      return;
+    }
+
+    player.src = src;
+    player.play().then(()=>{
+      activeCard = card;
+      card.classList.add('playing');
+      updateRing();
+    }).catch(()=>{
+      card.classList.add('show-hint');
+      setTimeout(()=>card.classList.remove('show-hint'), 1800);
+    });
+  });
+
+  player.addEventListener('ended', stopActive);
+  player.addEventListener('error', ()=>{
+    if(activeCard){
+      activeCard.classList.add('show-hint');
+      setTimeout(()=>activeCard && activeCard.classList.remove('show-hint'), 1800);
+    }
+    stopActive();
+  });
+
+
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = document.body.scrollHeight;
+  }
+  function makeStars(){
+    const n = Math.floor((canvas.width*Math.min(canvas.height, window.innerHeight*2))/9000);
+    stars = Array.from({length:n}, () => ({
+      x: Math.random()*canvas.width,
+      y: Math.random()*Math.min(canvas.height, window.innerHeight*1.4),
+      r: Math.random()*1.4+0.3,
+      p: Math.random()*Math.PI*2,
+      s: Math.random()*0.02+0.005
+    }));
+  }
+  function drawStars(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    stars.forEach(s=>{
+      s.p += s.s;
+      const tw = 0.5 + Math.sin(s.p)*0.5;
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(236,229,214,'+(0.25+tw*0.65)+')';
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fill();
+    });
+    if(!reduced) requestAnimationFrame(drawStars);
+  }
+  resize(); makeStars(); drawStars();
+  window.addEventListener('resize', ()=>{ resize(); makeStars(); });
+
+  const shooters = document.getElementById('shooters');
+  function launchShooter(){
+    const s = document.createElement('div');
+    s.className = 'shooting-star';
+    s.style.top = (10+Math.random()*40)+'%';
+    s.style.left = (50+Math.random()*45)+'%';
+    s.style.animation = 'shoot 1.4s ease-out forwards';
+    shooters.appendChild(s);
+    setTimeout(()=>s.remove(), 1500);
+  }
+  if(!reduced){ setInterval(launchShooter, 3800); launchShooter(); }
+
+  const heroPhoto = document.getElementById('heroPhoto');
+  if(!reduced && heroPhoto){
+    window.addEventListener('mousemove', (e)=>{
+      const x = (e.clientX/window.innerWidth - 0.5);
+      const y = (e.clientY/window.innerHeight - 0.5);
+      heroPhoto.style.transform = 'scale(1.06) translate('+(x*-14)+'px,'+(y*-8)+'px)';
+    });
+    window.addEventListener('scroll', ()=>{
+      const sc = window.scrollY;
+      if(sc < window.innerHeight){
+        heroPhoto.style.transform = 'scale('+(1.06+sc*0.0002)+') translateY('+(sc*0.15)+'px)';
+      }
+    }, { passive:true });
+  }
+
+  if(!reduced && window.matchMedia('(pointer:fine)').matches){
+    let last = 0;
+    window.addEventListener('mousemove', (e)=>{
+      const now = Date.now();
+      if(now-last < 45) return;
+      last = now;
+      const sp = document.createElement('div');
+      sp.className='spark';
+      sp.style.left = e.clientX+'px';
+      sp.style.top = e.clientY+'px';
+      document.body.appendChild(sp);
+      setTimeout(()=>sp.remove(), 900);
+    });
+  }
+
+  const bars = [document.getElementById('bar1'), document.getElementById('bar2'), document.getElementById('bar3')];
+  let bi = 0;
+  setInterval(()=>{
+    bars.forEach((b,idx)=>{
+      b.style.height = (idx===bi ? '16px' : '8px');
+      b.classList.toggle('on', idx===bi);
+    });
+    bi = (bi+1)%3;
+  }, 640);
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((entry, i)=>{
+      if(entry.isIntersecting){
+        setTimeout(()=> entry.target.classList.add('in'), i*60);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const ft = document.getElementById('footerTitle');
+  const original = ft.textContent;
+  ft.innerHTML = original.split('').map(ch => '<span>'+(ch===' '?'&nbsp;':ch)+'</span>').join('');
+  ft.querySelectorAll('span').forEach(sp=>{
+    sp.addEventListener('mouseenter', ()=>{
+      sp.style.color = 'var(--ember-bright)';
+      sp.style.transform = 'translateY(-6px)';
+      setTimeout(()=>{ sp.style.color=''; sp.style.transform=''; }, 300);
+    });
+  });
+
+  const emberField = document.getElementById('embers');
+  if(!reduced){
+    setInterval(()=>{
+      const e = document.createElement('div');
+      const size = 2+Math.random()*3;
+      e.style.position='absolute';
+      e.style.left = Math.random()*100+'%';
+      e.style.bottom = '0';
+      e.style.width = size+'px';
+      e.style.height = size+'px';
+      e.style.borderRadius='50%';
+      e.style.background = 'var(--ember-bright)';
+      e.style.boxShadow = '0 0 6px 2px rgba(184,83,46,0.5)';
+      e.style.opacity = '0.8';
+      e.style.transition = 'transform 4s linear, opacity 4s linear';
+      emberField.appendChild(e);
+      requestAnimationFrame(()=>{
+        e.style.transform = 'translateY(-'+(120+Math.random()*80)+'px) translateX('+(Math.random()*40-20)+'px)';
+        e.style.opacity = '0';
+      });
+      setTimeout(()=>e.remove(), 4200);
+    }, 500);
+  }
+
+  document.querySelectorAll('.faixa').forEach(card=>{
+    card.addEventListener('mousemove', (e)=>{
+      if(reduced) return;
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left)/r.width - 0.5;
+      const py = (e.clientY - r.top)/r.height - 0.5;
+      card.style.transform = 'perspective(600px) rotateX('+(py*-3)+'deg) rotateY('+(px*3)+'deg)';
+    });
+    card.addEventListener('mouseleave', ()=>{ card.style.transform=''; });
+  });
+</script>
+
+</body>
+</html>
